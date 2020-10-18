@@ -1,62 +1,44 @@
 ﻿using System;
 
-namespace Lanoratorna__2_1
+namespace lABORATORNA_2_2
 {
-    public class Point
+    class Book
     {
-        public int x { get; }
-        public int y { get; }
-        public string text { get; }
-        public Point(int x, int y)
+        public Title title = new Title();
+        public Author author = new Author();
+        public Content content = new Content();
+    }
+
+    class Title
+    {
+        public string title = "Вода и мир";
+        public void Show()
         {
-            this.x = x;
-            this.y = y;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(title);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
-    class Figure
+    class Author
     {
-        public double Perimeter;
-        public string Name { get; }
-
-        public Figure(Point p1, Point p2, Point p3)
+        public string author = "Лев Толстой";
+        public void Show()
         {
-            Name = "Треугольник";
-            PerimeterCalculator(p1, p2, p3);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(author);
+            Console.ForegroundColor = ConsoleColor.White;
         }
+    }
 
-        public Figure(Point p1, Point p2, Point p3, Point p4)
+    class Content
+    {
+        public string content = "content";
+        public void Show()
         {
-            Name = "Четырёхугольник";
-            PerimeterCalculator(p1, p2, p3, p4);
-        }
-
-        public Figure(Point p1, Point p2, Point p3, Point p4, Point p5)
-        {
-            Name = "Пятиугольник";
-            PerimeterCalculator(p1, p2, p3, p4, p5);
-        }
-
-        public double LengthSide(Point A, Point B)
-        {
-            int l = Math.Abs(B.x - A.x);
-            int h = Math.Abs(B.y - A.y);
-            return Math.Sqrt(h * h + l * l);
-        }
-
-        void PerimeterCalculator(Point p1, Point p2, Point p3)
-        {
-            Perimeter = LengthSide(p1, p2) + LengthSide(p2, p3) + LengthSide(p3, p1);
-        }
-
-        void PerimeterCalculator(Point p1, Point p2, Point p3, Point p4)
-        {
-            Perimeter = LengthSide(p1, p2) + LengthSide(p2, p3) + LengthSide(p3, p4) + LengthSide(p4, p1);
-        }
-
-        void PerimeterCalculator(Point p1, Point p2, Point p3, Point p4, Point p5)
-        {
-            Perimeter = LengthSide(p1, p2) + LengthSide(p2, p3) + LengthSide(p3, p4) + LengthSide(p4, p5) + LengthSide(p5, p1);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(content);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
@@ -64,12 +46,10 @@ namespace Lanoratorna__2_1
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(1, 1);
-            Point p3 = new Point(0, 4);
-            Figure figure = new Figure(p1, p2, p3);
-            Console.WriteLine("Фигура: " + figure.Name);
-            Console.WriteLine("P = " + figure.Perimeter);
+            Book book = new Book();
+            book.title.Show();
+            book.author.Show();
+            book.content.Show();
             Console.ReadKey();
         }
     }
